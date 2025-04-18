@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useState , useEffect } from 'react';
 import { useData } from '../contexts/DataContext';
-import { List, ListItem, ListItemText, Typography } from '@mui/material';
+import { Button, Box, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { CreateProductForm } from '../components/CreateProductForm';
 
 export const ProductsPage = () => {
+  const [createModalOpen, setCreateModalOpen] = useState(false);
   const { products, refreshProducts } = useData();
 
   useEffect(() => {
@@ -11,9 +13,19 @@ export const ProductsPage = () => {
 
   return (
     <div>
-      <Typography variant="h4" gutterBottom>
-        Products
-      </Typography>
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+        <Typography variant="h4" gutterBottom>
+          Products
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setCreateModalOpen(true)}
+        >
+          Add Product
+        </Button>
+      </Box>
+      
       <List>
         {products.map((product) => (
           <ListItem key={product.id}>
@@ -24,6 +36,11 @@ export const ProductsPage = () => {
           </ListItem>
         ))}
       </List>
+      
+      <CreateProductForm
+        open={createModalOpen}
+        handleClose={() => setCreateModalOpen(false)}
+      />
     </div>
   );
 };

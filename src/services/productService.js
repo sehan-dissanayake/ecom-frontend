@@ -9,3 +9,7 @@ export const getProducts = async () => {
 export const getProduct = async (id) => {
   return axios.get(`${API_BASE}/products/${id}`);
 };
+
+export const createProduct = async (productData) => {
+  return axios.post(`${API_BASE}/products`, productData);
+};
