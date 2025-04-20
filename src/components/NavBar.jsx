@@ -7,7 +7,7 @@ export const NavBar = () => (
       <Typography variant="h6" sx={{ flexGrow: 1 }}>
         E-Commerce App
       </Typography>
-      <Button color="inherit" component={Link} to="/products">
+      <Button color="inherit" component={Link} to="/">
         Products
       </Button>
       <Button color="inherit" component={Link} to="/orders">
